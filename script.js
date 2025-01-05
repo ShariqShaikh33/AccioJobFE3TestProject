@@ -33,38 +33,41 @@ async function getData(){
 }
 
 
-// [{"id":"bitcoin",
-// "symbol":"btc",
-// "name":"Bitcoin",
-// "image":"https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400",
-// "current_price":97943,
-// "market_cap":1937905749797,
-// "market_cap_rank":1,
-// "fully_diluted_valuation":2054729032279,
-// "total_volume":19295739047,
-// "high_24h":98695,
-// "low_24h":97577,
-// "price_change_24h":122.0,
-// "price_change_percentage_24h":0.12471,
-// "market_cap_change_24h":1504793923,
-// "market_cap_change_percentage_24h":0.07771,
-// "circulating_supply":19806028.0,
-// "total_supply":21000000.0,
-// "max_supply":21000000.0,
-// "ath":108135,
-// "ath_change_percentage":-9.47239,
-// "ath_date":"2024-12-17T15:02:41.429Z",
-// "atl":67.81,
-// "atl_change_percentage":144263.96938,
-// "atl_date":"2013-07-06T00:00:00.000Z",
-// "roi":null,
-// "last_updated":"2025-01-05T13:29:30.606Z"},
 
 let table = document.getElementById("table");
-
 getData().then((data)=>{
     renderElement(data);
 });
+
+
+let searchbar = document.getElementById("searchbar");
+searchbar.addEventListener('keydown', (event)=>{
+    if(event.key==="Enter"){
+        if(searchbar.value!=""){
+            getData().then((data)=>{
+                let filtered = data.filter((item)=>{
+                    return ((searchbar.value).toLowerCase() == (item.name).toLowerCase() || (searchbar.value).toLowerCase() == (item.symbol).toLowerCase());
+                })
+                return filtered;
+            }).then((res)=>{
+                table.innerHTML="";
+                console.log(res);
+                renderElement(res);
+            });
+        }
+        else{
+            getData().then((data)=>{
+                table.innerHTML="";
+                renderElement(data);
+            });
+            
+        }
+
+    }
+})
+
+
+
 
 function sortMtkCap(arr){
     for (let i = 0; i < arr.length; i++) {
@@ -91,6 +94,11 @@ marketCapbtn.addEventListener('click', ()=> {
     })
 }
 );
+
+
+
+
+
 
 
 function sortPerc(arr){
