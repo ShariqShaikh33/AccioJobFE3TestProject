@@ -1,0 +1,74 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    background: black;
+    color: white;
+    font-size: 16px;
+    font-family: arial;
+}
+
+#mainDiv{
+    width: 100%;
+    height: 100vh;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#renderDiv{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+
+}
+
+.top{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    
+}
+
+.searchbar{
+    width: 60%;
+    height: 3em;
+    padding-left: 10px;
+    border: 1px solid white;
+}
+
+.sortbtn{
+    border: 1px solid white;
+    color: white;
+    width: 20%;
+}
+
+.maintable{
+    color: white;
+    width: 100%;
+}
+
+.tablerow{
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+}
+
+.logo{
+    height: 100%;
+    width: 2rem;
+}
+
+.redcell{
+    color: red;
+}
+
+.greencell{
+    color: limegreen;
+}
